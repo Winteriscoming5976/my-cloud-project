@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vote App</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Favorite Programming Language</h1>
+
+        <div class="vote-card">
+            <h2 id="js-count">JavaScript: 0</h2>
+            <button onclick="vote('js')">
+                Vote JavaScript
+            </button>
+        </div>
+
+        <div class="vote-card">
+            <h2 id="python-count">Python: 0</h2>
+            <button onclick="vote('python')">
+                Vote Python
+            </button>
+        </div>
+
+        <div class="vote-card">
+            <h2 id="rust-count">Rust: 0</h2>
+            <button onclick="vote('rust')">
+                Vote Rust
+            </button>
+        </div>
+
+        <button class="reset-btn" onclick="resetVotes()">
+            Reset Votes
+        </button>
+    </div>
+
+    <script src="app.js"></script>
+
+</body>
+</html>

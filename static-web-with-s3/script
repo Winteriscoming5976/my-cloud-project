@@ -1,0 +1,28 @@
+# deploy cloudformation stack to create s3 bucket with random name
+./deploy.sh
+
+# upload file to your s3 bucket for static web
+aws s3 cp index.html s3://my-static-site-staticwebsitebucket-ef8fo6knlgch/
+
+# get information for url of static web
+aws cloudformation describe-stacks \
+  --stack-name my-static-site \
+  --query "Stacks[0].Outputs"
+
+# list all bucket
+aws s3 ls
+
+
+# delete all object on s3 bucket
+aws s3 rm s3://my-static-site-staticwebsitebucket-ef8fo6knlgch/ --recursive
+
+# delete cloudformation stack
+aws cloudformation delete-stack \
+  --stack-name my-static-site
+
+# make sure cloudformation stack is already deleted
+aws cloudformation describe-stacks \
+  --stack-name my-static-site
+
+# delete bucket
+aws s3 rb s3://my-static-site-staticwebsitebucket-ef8fo6knlgch

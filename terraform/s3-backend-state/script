@@ -1,0 +1,5 @@
+# before run this command you should create the bucket that name exactly like s3 backend state bucket in terraform file
+terrafrom init
+
+# Apply infrastructure changes automatically WITHOUT asking for confirmation
+tf apply --auto-approve

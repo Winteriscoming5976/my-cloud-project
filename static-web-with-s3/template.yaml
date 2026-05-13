@@ -1,0 +1,30 @@
+AWSTemplateFormatVersion: '2010-09-09'
+
+Resources:
+  StaticWebsiteBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      WebsiteConfiguration:
+        IndexDocument: index.html
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: false
+        BlockPublicPolicy: false
+        IgnorePublicAcls: false
+        RestrictPublicBuckets: false
+
+  BucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref StaticWebsiteBucket
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Sid: PublicRead
+            Effect: Allow
+            Principal: '*'
+            Action: s3:GetObject
+            Resource: !Sub '${StaticWebsiteBucket.Arn}/*'
+
+Outputs:
+  WebsiteURL:
+    Value: !GetAtt StaticWebsiteBucket.WebsiteURL
