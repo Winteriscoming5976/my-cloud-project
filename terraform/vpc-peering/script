@@ -1,0 +1,5 @@
+# run this to create the key pair that use to test connection between ec2 in each vpc
+
+aws ec2 create-key-pair --key-name vpc-peering-demo-east --region us-east-1 --query 'KeyMaterial' --output text > vpc-peering-demo-east.pem
+
+aws ec2 create-key-pair --key-name vpc-peering-demo-west --region us-west-2 --query 'KeyMaterial' --output text > vpc-peering-demo-west.pem
